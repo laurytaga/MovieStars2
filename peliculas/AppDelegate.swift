@@ -12,10 +12,28 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        if (NSUserDefaults.standardUserDefaults().stringForKey("userMovies") != nil){
+            
+            //let vc = self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("contenedor")
+            //self.window?.rootViewController = vc
+            
+            let vc2 = (self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("contenedor"))! as UIViewController
+            self.window?.rootViewController!.presentViewController(vc2, animated: true, completion: nil)
+            
+        }else{
+        
+            let vc = self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("login")
+            self.window?.rootViewController = vc
+            
+        }
+        self.window?.makeKeyAndVisible()
         return true
     }
 
